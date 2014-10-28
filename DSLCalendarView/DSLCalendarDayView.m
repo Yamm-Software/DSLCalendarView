@@ -130,7 +130,7 @@
         if (self.isInCurrentMonth) {
             
             if (self.isInCurrentDay) {
-                [[UIColor colorWithRed:70.0/255.0 green:88.0/255.0 blue:120.0/255.0 alpha:1.0] setFill];
+                [[UIColor colorWithRed:183.0/255.0 green:211.0/255.0 blue:251.0/255.0 alpha:1.0] setFill];
             }
             else {
                 [[UIColor colorWithWhite:245.0/255.0 alpha:1.0] setFill];
