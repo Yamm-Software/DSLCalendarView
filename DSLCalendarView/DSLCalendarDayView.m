@@ -70,8 +70,26 @@
 - (void)setDay:(NSDateComponents *)day {
     _calendar = [day calendar];
     _dayAsDate = [day date];
-    _day = nil;
     _labelText = [NSString stringWithFormat:@"%ld", (long)day.day];
+    
+    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+
+    NSCalendar* calendar = [NSCalendar currentCalendar];    
+
+    NSDateComponents* nowComponents = [calendar components:unitFlags fromDate:[NSDate date]];
+    NSDateComponents* aDayComponents = [calendar components:unitFlags fromDate:_dayAsDate];
+
+    if ([nowComponents day] == [aDayComponents day]
+        && [nowComponents month] == [aDayComponents month]
+        && [nowComponents year] == [aDayComponents year]) {
+        
+        _inCurrentDay = YES;
+    }
+    else {
+        _inCurrentDay = NO;
+    }
+    
+    _day = nil;
 }
 
 - (NSDateComponents*)day {
@@ -109,10 +127,20 @@
 - (void)drawBackground {
     if (self.selectionState == DSLCalendarDayViewNotSelected) {
         if (self.isInCurrentMonth) {
-            [[UIColor colorWithWhite:245.0/255.0 alpha:1.0] setFill];
+            [[UIColor greenColor] setFill];
+            
+            if (self.isInCurrentDay) {
+                [[UIColor redColor] setFill];
+            }
         }
+        
         else {
-            [[UIColor colorWithWhite:225.0/255.0 alpha:1.0] setFill];
+            if (self.isInCurrentDay) {
+                [[UIColor colorWithWhite:245.0/255.0 alpha:1.0] setFill];
+            }
+            else {
+                [[UIColor colorWithWhite:225.0/255.0 alpha:1.0] setFill];
+            }
         }
         UIRectFill(self.bounds);
     }
