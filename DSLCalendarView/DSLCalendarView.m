@@ -314,6 +314,7 @@
                  // Use a transition so it fades between states nicely
                  [UIView transitionWithView:dayView duration:animationDuration options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
                      dayView.inCurrentMonth = (index == 2);
+//                     dayView.inCurrentDay = 
                  } completion:NULL];
              }
         }
