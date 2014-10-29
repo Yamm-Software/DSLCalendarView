@@ -139,10 +139,10 @@
         
         else {
             if (self.isInCurrentDay) {
-                [[UIColor colorWithWhite:245.0/255.0 alpha:1.0] setFill];
+                [[UIColor colorWithRed:183.0/255.0 green:211.0/255.0 blue:251.0/255.0 alpha:1.0] setFill];
             }
             else {
-                [[UIColor colorWithWhite:225.0/255.0 alpha:1.0] setFill];
+                [[UIColor colorWithWhite:245.0/255.0 alpha:1.0] setFill];
             }
         }
         UIRectFill(self.bounds);
@@ -240,3 +240,4 @@
 }
 
 @end
+
