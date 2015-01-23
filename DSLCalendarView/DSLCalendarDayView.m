@@ -239,5 +239,34 @@
     [_labelText drawInRect:textRect withFont:textFont];
 }
 
+
+-(UIImage*) blendImage:(UIImage*)firstImageName andImage:(UIImage*)secondImageName {
+    
+    UIImage* bgImage = [UIImage imageNamed:firstImageName];
+    UIImage* fgImage = [UIImage imageNamed:secondImageName];
+    
+    // bgImage
+    CGImageRef bgImageRef = bgImage.CGImage;
+    CGFloat bgWidth = CGImageGetWidth(bgImageRef);
+    CGFloat bgHeight = CGImageGetHeight(bgImageRef);
+    
+    // fgImage
+    CGImageRef fgImageRef = fgImage.CGImage;
+    CGFloat fgWidth = CGImageGetWidth(fgImageRef);
+    CGFloat fgHeight = CGImageGetHeight(fgImageRef);
+    
+    CGSize mergedSize = CGSizeMake(bgWidth, bgHeight);
+    
+    UIGraphicsBeginImageContextWithOptions(mergedSize, YES, 0.0);
+    
+    // Draw images onto the context
+    [bgImage drawInRect:CGRectMake(0, 0, bgWidth, bgHeight)];
+    [fgImage drawInRect:CGRectMake(0, 0, fgWidth, fgHeight)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
+
 @end
 
