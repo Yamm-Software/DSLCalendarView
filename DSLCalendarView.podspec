@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/Yamm-Software/DSLCalendarView"
   s.screenshots  = "https://github.com/Yamm-Software/DSLCalendarView/raw/images/Screenshot.png"
   s.license = { :type => 'BSD 3-Clause License', :file => 'README.markdown' }
-  s.source       = { :git => "https://github.com/Yamm-Software/DSLCalendarView.git", :commit => "cd64b97529fd25c3b610c1681e1cfbf301a07cc0" }
+  s.source       = { :git => "https://github.com/Yamm-Software/DSLCalendarView.git", :branch => "master" }
 
   s.requires_arc = true
   s.platform = :ios, '5.0'
