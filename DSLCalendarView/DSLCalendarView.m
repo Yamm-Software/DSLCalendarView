@@ -400,7 +400,7 @@
     
     DSLCalendarDayView *touchedView = [self dayViewForTouches:touches];
     if (touchedView == nil) {
-        self.draggingStartDay = nil;
+        //self.draggingStartDay = nil;
         return;
     }
     
@@ -434,6 +434,11 @@
     DSLCalendarDayView *touchedView = [self dayViewForTouches:touches];
     if (touchedView == nil) {
         self.draggingStartDay = nil;
+        
+        if ([self.delegate respondsToSelector:@selector(calendarView:didSelectRange:)]) {
+            [self.delegate calendarView:self didSelectRange:self.selectedRange];
+        }
+        
         return;
     }
     
